@@ -1,60 +1,59 @@
-<section class="real-estate-page">
+<section class="milon-agency-page">
   <style>
-    .real-estate-page{
+    .milon-agency-page{
       font-family: Arial, sans-serif;
-      background:#f7f4ef;
-      color:#1d1d1d;
+      background:#f6f2ec;
+      color:#1f1f1f;
       overflow:hidden;
     }
 
-    .re-hero{
+    .milon-hero{
       min-height:90vh;
       padding:80px 7%;
       display:grid;
       grid-template-columns:1.1fr .9fr;
+      gap:45px;
       align-items:center;
-      gap:50px;
       background:
-        linear-gradient(120deg,rgba(0,0,0,.75),rgba(0,0,0,.25)),
-        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80");
+        linear-gradient(120deg,rgba(0,0,0,.78),rgba(0,0,0,.35)),
+        url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80");
       background-size:cover;
       background-position:center;
       color:white;
-      border-radius:0 0 45px 45px;
+      border-radius:0 0 48px 48px;
     }
 
-    .re-label{
+    .milon-label{
       display:inline-block;
       padding:10px 18px;
-      border:1px solid rgba(255,255,255,.4);
+      border:1px solid rgba(255,255,255,.45);
       border-radius:50px;
-      font-size:13px;
+      font-size:12px;
       letter-spacing:2px;
       margin-bottom:20px;
     }
 
-    .re-hero h1{
-      font-size:64px;
+    .milon-hero h1{
+      font-size:62px;
       line-height:1.05;
-      margin:0 0 24px;
-      max-width:720px;
+      margin:0 0 22px;
     }
 
-    .re-hero p{
+    .milon-hero p{
       font-size:18px;
       line-height:1.8;
-      max-width:580px;
-      color:#f2f2f2;
+      color:#eee;
+      max-width:620px;
     }
 
-    .re-buttons{
+    .milon-buttons{
       display:flex;
       gap:15px;
       flex-wrap:wrap;
       margin-top:30px;
     }
 
-    .re-btn{
+    .milon-btn{
       padding:15px 28px;
       border-radius:50px;
       text-decoration:none;
@@ -62,364 +61,510 @@
       transition:.3s;
     }
 
-    .re-btn-primary{
+    .milon-btn-main{
       background:#c89b5c;
       color:white;
     }
 
-    .re-btn-secondary{
+    .milon-btn-light{
       border:1px solid white;
       color:white;
     }
 
-    .re-btn:hover{
+    .milon-btn:hover{
       transform:translateY(-4px);
       box-shadow:0 15px 35px rgba(0,0,0,.25);
     }
 
-    .re-card{
-      background:rgba(255,255,255,.15);
-      backdrop-filter:blur(16px);
+    .milon-glass-card{
+      background:rgba(255,255,255,.16);
+      backdrop-filter:blur(18px);
       border:1px solid rgba(255,255,255,.25);
-      border-radius:30px;
+      border-radius:32px;
       padding:35px;
-      box-shadow:0 25px 70px rgba(0,0,0,.25);
+      box-shadow:0 25px 70px rgba(0,0,0,.28);
     }
 
-    .re-card h3{
-      font-size:28px;
-      margin-bottom:15px;
+    .milon-glass-card h3{
+      font-size:30px;
+      margin:0 0 15px;
     }
 
-    .re-search{
+    .milon-stats{
       display:grid;
+      grid-template-columns:1fr 1fr;
       gap:15px;
-      margin-top:20px;
+      margin-top:25px;
     }
 
-    .re-search input,
-    .re-search select{
-      padding:15px;
-      border:none;
-      border-radius:14px;
-      outline:none;
-      font-size:15px;
+    .milon-stat{
+      background:rgba(255,255,255,.15);
+      border-radius:20px;
+      padding:20px;
     }
 
-    .re-section{
+    .milon-stat strong{
+      display:block;
+      font-size:26px;
+      color:#fff;
+    }
+
+    .milon-stat span{
+      font-size:14px;
+      color:#eee;
+    }
+
+    .milon-section{
       padding:80px 7%;
     }
 
-    .re-title{
+    .milon-title{
       text-align:center;
-      max-width:750px;
+      max-width:760px;
       margin:0 auto 50px;
     }
 
-    .re-title span{
+    .milon-title span{
       color:#c89b5c;
-      letter-spacing:2px;
       font-size:13px;
-      font-weight:bold;
+      letter-spacing:2px;
+      font-weight:700;
     }
 
-    .re-title h2{
+    .milon-title h2{
       font-size:42px;
       margin:12px 0;
     }
 
-    .re-title p{
+    .milon-title p{
       color:#666;
       line-height:1.7;
     }
 
-    .re-projects{
+    .milon-projects{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:28px;
     }
 
-    .project-card{
+    .milon-project{
       background:white;
-      border-radius:28px;
+      border-radius:30px;
       overflow:hidden;
       box-shadow:0 20px 55px rgba(0,0,0,.08);
       transition:.35s;
     }
 
-    .project-card:hover{
+    .milon-project:hover{
       transform:translateY(-10px);
     }
 
-    .project-card img{
+    .milon-project img{
       width:100%;
       height:250px;
       object-fit:cover;
     }
 
-    .project-info{
-      padding:26px;
+    .milon-project-content{
+      padding:28px;
     }
 
-    .project-info h3{
-      font-size:25px;
-      margin:0 0 10px;
+    .milon-project-content h3{
+      font-size:27px;
+      margin:0 0 12px;
     }
 
-    .project-info p{
+    .milon-project-content p{
       color:#666;
       line-height:1.7;
     }
 
-    .project-tags{
+    .milon-tags{
       display:flex;
-      gap:10px;
       flex-wrap:wrap;
-      margin:18px 0;
+      gap:9px;
+      margin-top:18px;
     }
 
-    .project-tags span{
-      background:#f3eadf;
+    .milon-tags span{
+      background:#f1e6d8;
       color:#8b6333;
       padding:8px 13px;
       border-radius:50px;
       font-size:13px;
-      font-weight:bold;
+      font-weight:700;
     }
 
-    .project-link{
-      display:inline-block;
-      margin-top:10px;
-      color:#c89b5c;
-      font-weight:bold;
-      text-decoration:none;
-    }
-
-    .re-services{
+    .milon-features{
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:22px;
     }
 
-    .service-box{
+    .milon-feature{
       background:white;
-      padding:32px 24px;
-      border-radius:25px;
-      text-align:center;
+      padding:30px 24px;
+      border-radius:26px;
       box-shadow:0 15px 40px rgba(0,0,0,.06);
+      text-align:center;
     }
 
-    .service-box h3{
-      margin-bottom:12px;
+    .milon-feature h3{
+      margin:0 0 12px;
+      font-size:21px;
     }
 
-    .service-box p{
+    .milon-feature p{
       color:#666;
       line-height:1.6;
       font-size:15px;
     }
 
-    .re-cta{
+    .milon-info-box{
+      background:#1d1d1d;
+      color:white;
+      border-radius:40px;
+      padding:60px 7%;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .milon-info-box h2{
+      font-size:42px;
+      margin:0 0 18px;
+    }
+
+    .milon-info-box p,
+    .milon-info-box li{
+      color:#eee;
+      line-height:1.8;
+    }
+
+    .milon-info-box ul{
+      padding-left:20px;
+    }
+
+    .milon-contact{
       margin:70px 7%;
       padding:70px 8%;
-      border-radius:40px;
+      border-radius:42px;
+      text-align:center;
+      color:white;
       background:
         linear-gradient(120deg,rgba(0,0,0,.82),rgba(0,0,0,.55)),
         url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
       background-size:cover;
       background-position:center;
-      color:white;
-      text-align:center;
     }
 
-    .re-cta h2{
+    .milon-contact h2{
       font-size:44px;
-      margin-bottom:15px;
+      margin:0 0 15px;
     }
 
-    .re-cta p{
-      max-width:650px;
-      margin:0 auto 28px;
-      line-height:1.8;
+    .milon-contact p{
       color:#eee;
+      line-height:1.8;
     }
 
-    .contact-list{
+    .milon-contact-links{
       display:flex;
       justify-content:center;
-      gap:18px;
+      gap:15px;
       flex-wrap:wrap;
       margin-top:25px;
     }
 
-    .contact-list a{
+    .milon-contact-links a{
       color:white;
-      background:rgba(255,255,255,.15);
-      border:1px solid rgba(255,255,255,.25);
+      text-decoration:none;
       padding:14px 22px;
       border-radius:50px;
-      text-decoration:none;
+      background:rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.25);
     }
 
-    @media(max-width:900px){
-      .re-hero,
-      .re-projects,
-      .re-services{
+    @media(max-width:950px){
+      .milon-hero,
+      .milon-projects,
+      .milon-features,
+      .milon-info-box{
         grid-template-columns:1fr;
       }
 
-      .re-hero h1{
+      .milon-hero h1{
         font-size:42px;
       }
 
-      .re-title h2,
-      .re-cta h2{
+      .milon-title h2,
+      .milon-contact h2,
+      .milon-info-box h2{
         font-size:32px;
       }
     }
   </style>
 
-  <div class="re-hero">
+  <div class="milon-hero">
     <div>
-      <span class="re-label">PREMIUM REAL ESTATE DEVELOPMENT</span>
-      <h1>Find Your Future Home With Milon Mining</h1>
+      <span class="milon-label">ԱՆՇԱՐԺ ԳՈՒՅՔ ԵՎ ԿԱՌՈՒՑԱՊԱՏՈՒՄ</span>
+
+      <h1>Milon Mining Շինարարական Ընկերություն</h1>
+
       <p>
-        Discover modern residential and commercial projects designed for comfort,
-        quality construction, smart planning and elegant everyday living.
+        Milon Mining LLC-ն անշարժ գույքի կառուցապատող ընկերություն է,
+        որը հայտնի է իր Milon Hills, Milon Tower և Milon Plaza նախագծերով։
       </p>
 
-      <div class="re-buttons">
-        <a href="#projects" class="re-btn re-btn-primary">View Projects</a>
-        <a href="#contact" class="re-btn re-btn-secondary">Contact Us</a>
+      <div class="milon-buttons">
+        <a href="#milon-projects" class="milon-btn milon-btn-main">
+          Դիտել Նախագծերը
+        </a>
+
+        <a href="#milon-contact" class="milon-btn milon-btn-light">
+          Կապ Մեզ Հետ
+        </a>
       </div>
     </div>
 
-    <div class="re-card">
-      <h3>Find Your Apartment</h3>
-      <p>Select your preferred project, area and room count.</p>
+    <div class="milon-glass-card">
+      <h3>Պրեմիում Նախագծեր</h3>
 
-      <div class="re-search">
-        <select>
-          <option>Select Project</option>
-          <option>Milon Hills</option>
-          <option>Milon Tower</option>
-          <option>Milon Plaza</option>
-        </select>
+      <p>
+        Ժամանակակից բնակելի և կոմերցիոն համալիրներ՝
+        ստեղծված հարմարավետ կյանքի և ներդրումների համար։
+      </p>
 
-        <select>
-          <option>Rooms</option>
-          <option>1 Room</option>
-          <option>2 Rooms</option>
-          <option>3 Rooms</option>
-          <option>4+ Rooms</option>
-        </select>
+      <div class="milon-stats">
 
-        <input type="text" placeholder="Preferred area, sqm">
+        <div class="milon-stat">
+          <strong>211</strong>
+          <span>Բնակարան Milon Hills-ում</span>
+        </div>
 
-        <a href="#contact" class="re-btn re-btn-primary" style="text-align:center;">Reserve Now</a>
+        <div class="milon-stat">
+          <strong>47–164</strong>
+          <span>քմ բնակարաններ</span>
+        </div>
+
+        <div class="milon-stat">
+          <strong>16</strong>
+          <span>հարկ Milon Tower-ում</span>
+        </div>
+
+        <div class="milon-stat">
+          <strong>60%</strong>
+          <span>կանաչապատ տարածք</span>
+        </div>
+
       </div>
     </div>
   </div>
 
-  <div class="re-section" id="projects">
-    <div class="re-title">
-      <span>OUR PROJECTS</span>
-      <h2>Modern Living Spaces</h2>
+  <div class="milon-section" id="milon-projects">
+
+    <div class="milon-title">
+      <span>ՄԵՐ ՆԱԽԱԳԾԵՐԸ</span>
+
+      <h2>Բնակելի Համալիրներ Milon Mining-ի Կողմից</h2>
+
       <p>
-        Explore premium residential projects created for families, investors and
-        people who value comfort, location and quality.
+        Բացահայտեք ժամանակակից ճարտարապետությամբ,
+        հարմարավետ պլանավորմամբ և կանաչ միջավայրով նախագծեր։
       </p>
     </div>
 
-    <div class="re-projects">
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80" alt="Milon Hills">
-        <div class="project-info">
+    <div class="milon-projects">
+
+      <div class="milon-project">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80">
+
+        <div class="milon-project-content">
+
           <h3>Milon Hills</h3>
-          <p>A peaceful residential environment with modern architecture and comfortable planning.</p>
-          <div class="project-tags">
-            <span>Apartments</span>
-            <span>Modern</span>
-            <span>Family</span>
+
+          <p>
+            Բնակելի թաղամաս՝ 211 բնակարաններով,
+            47-ից 164 քմ մակերեսով և ավտոկայանատեղիներով։
+          </p>
+
+          <div class="milon-tags">
+            <span>211 Բնակարան</span>
+            <span>47–164 քմ</span>
+            <span>Parking</span>
           </div>
-          <a href="#contact" class="project-link">Request Information →</a>
+
         </div>
       </div>
 
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80" alt="Milon Tower">
-        <div class="project-info">
+      <div class="milon-project">
+        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80">
+
+        <div class="milon-project-content">
+
           <h3>Milon Tower</h3>
-          <p>A contemporary high-rise project with elegant design and practical apartment layouts.</p>
-          <div class="project-tags">
-            <span>High-Rise</span>
-            <span>City Living</span>
-            <span>Premium</span>
+
+          <p>
+            Ժամանակակից ապակեպատ շենք Աբովյանում՝
+            16 հարկով և դուպլեքս բնակարաններով։
+          </p>
+
+          <div class="milon-tags">
+            <span>Աբովյան</span>
+            <span>16 Հարկ</span>
+            <span>Դուպլեքս</span>
           </div>
-          <a href="#contact" class="project-link">Request Information →</a>
+
         </div>
       </div>
 
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Milon Plaza">
-        <div class="project-info">
+      <div class="milon-project">
+        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80">
+
+        <div class="milon-project-content">
+
           <h3>Milon Plaza</h3>
-          <p>A smart mixed-use concept for comfortable living and commercial opportunities.</p>
-          <div class="project-tags">
-            <span>Commercial</span>
-            <span>Residential</span>
-            <span>Investment</span>
+
+          <p>
+            Բնակելի համալիր Կոտայքի մարզում՝
+            նախատեսված հարմարավետ և ժամանակակից կյանքի համար։
+          </p>
+
+          <div class="milon-tags">
+            <span>Բնակելի Համալիր</span>
+            <span>Աբովյան</span>
+            <span>Կոտայք</span>
           </div>
-          <a href="#contact" class="project-link">Request Information →</a>
+
         </div>
       </div>
+
     </div>
   </div>
 
-  <div class="re-section">
-    <div class="re-title">
-      <span>WHY CHOOSE US</span>
-      <h2>Real Estate Built With Trust</h2>
+  <div class="milon-section">
+
+    <div class="milon-title">
+      <span>MILON TOWER ԱՌԱՎԵԼՈՒԹՅՈՒՆՆԵՐ</span>
+
+      <h2>Հարմարավետություն և Անվտանգություն</h2>
     </div>
 
-    <div class="re-services">
-      <div class="service-box">
-        <h3>Quality Construction</h3>
-        <p>Strong materials, reliable planning and professional construction standards.</p>
+    <div class="milon-features">
+
+      <div class="milon-feature">
+        <h3>Կանաչ Գոտի</h3>
+        <p>Մեծ կանաչապատ տարածքներ՝ հարմարավետ միջավայրի համար։</p>
       </div>
 
-      <div class="service-box">
-        <h3>Modern Design</h3>
-        <p>Beautiful architecture with comfortable layouts for everyday living.</p>
+      <div class="milon-feature">
+        <h3>Մանկական Հրապարակ</h3>
+        <p>Անվտանգ և գեղեցիկ խաղահրապարակ երեխաների համար։</p>
       </div>
 
-      <div class="service-box">
-        <h3>Flexible Options</h3>
-        <p>Choose your project, area and room count according to your needs.</p>
+      <div class="milon-feature">
+        <h3>Առևտրի Կենտրոն</h3>
+        <p>Համալիրում նախատեսված կոմերցիոն տարածքներ։</p>
       </div>
 
-      <div class="service-box">
-        <h3>Personal Support</h3>
-        <p>Our team helps you from first consultation to reservation.</p>
+      <div class="milon-feature">
+        <h3>Տանիքի Հանգստի Գոտի</h3>
+        <p>Բացօթյա հանգստի հատուկ տարածք բնակիչների համար։</p>
       </div>
+
+      <div class="milon-feature">
+        <h3>9 Բալ Սեյսմակայունություն</h3>
+        <p>Բարձր անվտանգություն և ամուր կառուցվածք։</p>
+      </div>
+
+      <div class="milon-feature">
+        <h3>Ձայնամեկուսացում</h3>
+        <p>Ավելի հանգիստ և հարմարավետ բնակելի միջավայր։</p>
+      </div>
+
+      <div class="milon-feature">
+        <h3>Ջերմամեկուսացում</h3>
+        <p>Էներգախնայող և հարմարավետ բնակարաններ։</p>
+      </div>
+
+      <div class="milon-feature">
+        <h3>Պանորամային Պատուհաններ</h3>
+        <p>Լուսավոր և ժամանակակից բնակարաններ։</p>
+      </div>
+
     </div>
   </div>
 
-  <div class="re-cta" id="contact">
-    <h2>Ready To Choose Your New Home?</h2>
+  <div class="milon-section">
+
+    <div class="milon-info-box">
+
+      <div>
+        <h2>Milon Tower Բնակարանների Հանձնում</h2>
+
+        <p>
+          Բնակարանները կհանձնվեն նախնական ավարտական աշխատանքներով։
+        </p>
+      </div>
+
+      <div>
+        <ul>
+          <li>Հատակի ցեմենտ-ավազային շերտ</li>
+          <li>Սվաղված պատեր</li>
+          <li>Միջնապատերի տեղադրում</li>
+          <li>Էլեկտրամոնտաժային աշխատանքներ</li>
+          <li>Սանտեխնիկական կետեր</li>
+          <li>Գազաֆիկացում</li>
+          <li>Պանորամային պատուհաններ</li>
+          <li>Երկաթյա մուտքի դուռ</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="milon-contact" id="milon-contact">
+
+    <h2>Կապ Milon Mining-ի Հետ</h2>
+
     <p>
-      Contact the sales team, explore available apartments and reserve your preferred property today.
+      Ստացեք տեղեկատվություն բնակարանների,
+      գների և նախագծերի վերաբերյալ։
     </p>
 
-    <div class="re-buttons" style="justify-content:center;">
-      <a href="tel:+37460770909" class="re-btn re-btn-primary">Call Now</a>
-      <a href="mailto:info@milonmining.am" class="re-btn re-btn-secondary">Send Email</a>
+    <div class="milon-buttons" style="justify-content:center;">
+
+      <a href="tel:+37460770909" class="milon-btn milon-btn-main">
+        Զանգահարել
+      </a>
+
+      <a href="mailto:info@milonmining.am" class="milon-btn milon-btn-light">
+        Ուղարկել Նամակ
+      </a>
+
     </div>
 
-    <div class="contact-list">
+    <div class="milon-contact-links">
+
       <a href="tel:+37460770909">+374 60 770909</a>
+
+      <a href="tel:+37444940909">+374 44 940909</a>
+
       <a href="tel:+37491115566">+374 91 115566</a>
-      <a href="mailto:info@milonmining.am">info@milonmining.am</a>
+
+      <a href="tel:+37433559555">+374 33 559555</a>
+
+      <a href="mailto:info@milonmining.am">
+        info@milonmining.am
+      </a>
+
     </div>
+
+    <p style="margin-top:25px;">
+      Հասցե՝ Կոտայքի մարզ, գյուղ Առինջ, Բ թաղամաս,
+      1-ին փողոց, 1/1
+    </p>
+
   </div>
 </section>
