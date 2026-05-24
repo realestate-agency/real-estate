@@ -1,1 +1,425 @@
+<section class="real-estate-page">
+  <style>
+    .real-estate-page{
+      font-family: Arial, sans-serif;
+      background:#f7f4ef;
+      color:#1d1d1d;
+      overflow:hidden;
+    }
 
+    .re-hero{
+      min-height:90vh;
+      padding:80px 7%;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      align-items:center;
+      gap:50px;
+      background:
+        linear-gradient(120deg,rgba(0,0,0,.75),rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80");
+      background-size:cover;
+      background-position:center;
+      color:white;
+      border-radius:0 0 45px 45px;
+    }
+
+    .re-label{
+      display:inline-block;
+      padding:10px 18px;
+      border:1px solid rgba(255,255,255,.4);
+      border-radius:50px;
+      font-size:13px;
+      letter-spacing:2px;
+      margin-bottom:20px;
+    }
+
+    .re-hero h1{
+      font-size:64px;
+      line-height:1.05;
+      margin:0 0 24px;
+      max-width:720px;
+    }
+
+    .re-hero p{
+      font-size:18px;
+      line-height:1.8;
+      max-width:580px;
+      color:#f2f2f2;
+    }
+
+    .re-buttons{
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+      margin-top:30px;
+    }
+
+    .re-btn{
+      padding:15px 28px;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:700;
+      transition:.3s;
+    }
+
+    .re-btn-primary{
+      background:#c89b5c;
+      color:white;
+    }
+
+    .re-btn-secondary{
+      border:1px solid white;
+      color:white;
+    }
+
+    .re-btn:hover{
+      transform:translateY(-4px);
+      box-shadow:0 15px 35px rgba(0,0,0,.25);
+    }
+
+    .re-card{
+      background:rgba(255,255,255,.15);
+      backdrop-filter:blur(16px);
+      border:1px solid rgba(255,255,255,.25);
+      border-radius:30px;
+      padding:35px;
+      box-shadow:0 25px 70px rgba(0,0,0,.25);
+    }
+
+    .re-card h3{
+      font-size:28px;
+      margin-bottom:15px;
+    }
+
+    .re-search{
+      display:grid;
+      gap:15px;
+      margin-top:20px;
+    }
+
+    .re-search input,
+    .re-search select{
+      padding:15px;
+      border:none;
+      border-radius:14px;
+      outline:none;
+      font-size:15px;
+    }
+
+    .re-section{
+      padding:80px 7%;
+    }
+
+    .re-title{
+      text-align:center;
+      max-width:750px;
+      margin:0 auto 50px;
+    }
+
+    .re-title span{
+      color:#c89b5c;
+      letter-spacing:2px;
+      font-size:13px;
+      font-weight:bold;
+    }
+
+    .re-title h2{
+      font-size:42px;
+      margin:12px 0;
+    }
+
+    .re-title p{
+      color:#666;
+      line-height:1.7;
+    }
+
+    .re-projects{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:28px;
+    }
+
+    .project-card{
+      background:white;
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 20px 55px rgba(0,0,0,.08);
+      transition:.35s;
+    }
+
+    .project-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .project-card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+    }
+
+    .project-info{
+      padding:26px;
+    }
+
+    .project-info h3{
+      font-size:25px;
+      margin:0 0 10px;
+    }
+
+    .project-info p{
+      color:#666;
+      line-height:1.7;
+    }
+
+    .project-tags{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:18px 0;
+    }
+
+    .project-tags span{
+      background:#f3eadf;
+      color:#8b6333;
+      padding:8px 13px;
+      border-radius:50px;
+      font-size:13px;
+      font-weight:bold;
+    }
+
+    .project-link{
+      display:inline-block;
+      margin-top:10px;
+      color:#c89b5c;
+      font-weight:bold;
+      text-decoration:none;
+    }
+
+    .re-services{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:22px;
+    }
+
+    .service-box{
+      background:white;
+      padding:32px 24px;
+      border-radius:25px;
+      text-align:center;
+      box-shadow:0 15px 40px rgba(0,0,0,.06);
+    }
+
+    .service-box h3{
+      margin-bottom:12px;
+    }
+
+    .service-box p{
+      color:#666;
+      line-height:1.6;
+      font-size:15px;
+    }
+
+    .re-cta{
+      margin:70px 7%;
+      padding:70px 8%;
+      border-radius:40px;
+      background:
+        linear-gradient(120deg,rgba(0,0,0,.82),rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80");
+      background-size:cover;
+      background-position:center;
+      color:white;
+      text-align:center;
+    }
+
+    .re-cta h2{
+      font-size:44px;
+      margin-bottom:15px;
+    }
+
+    .re-cta p{
+      max-width:650px;
+      margin:0 auto 28px;
+      line-height:1.8;
+      color:#eee;
+    }
+
+    .contact-list{
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:25px;
+    }
+
+    .contact-list a{
+      color:white;
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.25);
+      padding:14px 22px;
+      border-radius:50px;
+      text-decoration:none;
+    }
+
+    @media(max-width:900px){
+      .re-hero,
+      .re-projects,
+      .re-services{
+        grid-template-columns:1fr;
+      }
+
+      .re-hero h1{
+        font-size:42px;
+      }
+
+      .re-title h2,
+      .re-cta h2{
+        font-size:32px;
+      }
+    }
+  </style>
+
+  <div class="re-hero">
+    <div>
+      <span class="re-label">PREMIUM REAL ESTATE DEVELOPMENT</span>
+      <h1>Find Your Future Home With Milon Mining</h1>
+      <p>
+        Discover modern residential and commercial projects designed for comfort,
+        quality construction, smart planning and elegant everyday living.
+      </p>
+
+      <div class="re-buttons">
+        <a href="#projects" class="re-btn re-btn-primary">View Projects</a>
+        <a href="#contact" class="re-btn re-btn-secondary">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="re-card">
+      <h3>Find Your Apartment</h3>
+      <p>Select your preferred project, area and room count.</p>
+
+      <div class="re-search">
+        <select>
+          <option>Select Project</option>
+          <option>Milon Hills</option>
+          <option>Milon Tower</option>
+          <option>Milon Plaza</option>
+        </select>
+
+        <select>
+          <option>Rooms</option>
+          <option>1 Room</option>
+          <option>2 Rooms</option>
+          <option>3 Rooms</option>
+          <option>4+ Rooms</option>
+        </select>
+
+        <input type="text" placeholder="Preferred area, sqm">
+
+        <a href="#contact" class="re-btn re-btn-primary" style="text-align:center;">Reserve Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="re-section" id="projects">
+    <div class="re-title">
+      <span>OUR PROJECTS</span>
+      <h2>Modern Living Spaces</h2>
+      <p>
+        Explore premium residential projects created for families, investors and
+        people who value comfort, location and quality.
+      </p>
+    </div>
+
+    <div class="re-projects">
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80" alt="Milon Hills">
+        <div class="project-info">
+          <h3>Milon Hills</h3>
+          <p>A peaceful residential environment with modern architecture and comfortable planning.</p>
+          <div class="project-tags">
+            <span>Apartments</span>
+            <span>Modern</span>
+            <span>Family</span>
+          </div>
+          <a href="#contact" class="project-link">Request Information →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80" alt="Milon Tower">
+        <div class="project-info">
+          <h3>Milon Tower</h3>
+          <p>A contemporary high-rise project with elegant design and practical apartment layouts.</p>
+          <div class="project-tags">
+            <span>High-Rise</span>
+            <span>City Living</span>
+            <span>Premium</span>
+          </div>
+          <a href="#contact" class="project-link">Request Information →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Milon Plaza">
+        <div class="project-info">
+          <h3>Milon Plaza</h3>
+          <p>A smart mixed-use concept for comfortable living and commercial opportunities.</p>
+          <div class="project-tags">
+            <span>Commercial</span>
+            <span>Residential</span>
+            <span>Investment</span>
+          </div>
+          <a href="#contact" class="project-link">Request Information →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="re-section">
+    <div class="re-title">
+      <span>WHY CHOOSE US</span>
+      <h2>Real Estate Built With Trust</h2>
+    </div>
+
+    <div class="re-services">
+      <div class="service-box">
+        <h3>Quality Construction</h3>
+        <p>Strong materials, reliable planning and professional construction standards.</p>
+      </div>
+
+      <div class="service-box">
+        <h3>Modern Design</h3>
+        <p>Beautiful architecture with comfortable layouts for everyday living.</p>
+      </div>
+
+      <div class="service-box">
+        <h3>Flexible Options</h3>
+        <p>Choose your project, area and room count according to your needs.</p>
+      </div>
+
+      <div class="service-box">
+        <h3>Personal Support</h3>
+        <p>Our team helps you from first consultation to reservation.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="re-cta" id="contact">
+    <h2>Ready To Choose Your New Home?</h2>
+    <p>
+      Contact the sales team, explore available apartments and reserve your preferred property today.
+    </p>
+
+    <div class="re-buttons" style="justify-content:center;">
+      <a href="tel:+37460770909" class="re-btn re-btn-primary">Call Now</a>
+      <a href="mailto:info@milonmining.am" class="re-btn re-btn-secondary">Send Email</a>
+    </div>
+
+    <div class="contact-list">
+      <a href="tel:+37460770909">+374 60 770909</a>
+      <a href="tel:+37491115566">+374 91 115566</a>
+      <a href="mailto:info@milonmining.am">info@milonmining.am</a>
+    </div>
+  </div>
+</section>
