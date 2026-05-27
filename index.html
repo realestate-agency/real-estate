@@ -1,1164 +1,316 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milon Real Estate | Միլոն Անշարժ Գույք</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/fontsource-inter@5.0.16/index.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/fontsource-armenia@5.0.0/index.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                        armenian: ['Armenia', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#1a365d',
-                        secondary: '#2d8659',
-                        accent: '#c9a227',
-                        dark: '#0f172a',
-                        light: '#f8fafc',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        * { font-family: 'Inter', 'Armenia', sans-serif; }
-        html[lang="hy"] * { font-family: 'Armenia', 'Inter', sans-serif; }
-        
-        .hero-bg {
-            background: linear-gradient(135deg, rgba(26,54,93,0.85) 0%, rgba(15,23,42,0.9) 100%),
-                        url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920') center/cover no-repeat;
-        }
-        
-        .glass-card {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .property-card:hover .property-img { transform: scale(1.08); }
-        .property-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-        
-        .nav-link { position: relative; }
-        .nav-link::after {
-            content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
-            background: #c9a227; transition: width 0.3s;
-        }
-        .nav-link:hover::after { width: 100%; }
-        
-        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #c9a227, #1a365d);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        
-        .slide-in-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s ease; }
-        .slide-in-right { opacity: 0; transform: translateX(50px); transition: all 0.8s ease; }
-        .slide-in-left.visible, .slide-in-right.visible { opacity: 1; transform: translateX(0); }
-        
-        .counter { font-variant-numeric: tabular-nums; }
-        
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #1a365d; border-radius: 4px; }
-        
-        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
-        .mobile-menu.open { transform: translateX(0); }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .float-anim { animation: float 3s ease-in-out infinite; }
-        
-        .property-img { transition: transform 0.5s ease; }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #c9a227, #d4af37);
-            transition: all 0.3s;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(201,162,39,0.4);
-        }
-        
-        .section-divider {
-            height: 4px; width: 60px;
-            background: linear-gradient(90deg, #c9a227, #1a365d);
-            border-radius: 2px;
-        }
-    </style>
-</head>
-<body class="bg-light text-dark overflow-x-hidden">
+<section class="wedding-page">
 
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                        <i class="fas fa-building text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <span class="text-xl font-bold text-white" id="logoText">MILON</span>
-                        <span class="text-xs text-accent block -mt-1" id="logoSubtext">REAL ESTATE</span>
-                    </div>
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-8" id="navLinks">
-                    <a href="#home" class="nav-link text-white hover:text-accent transition" data-en="Home" data-hy="Գլխավոր">Home</a>
-                    <a href="#about" class="nav-link text-white hover:text-accent transition" data-en="About" data-hy="Մեր Մասին">About</a>
-                    <a href="#properties" class="nav-link text-white hover:text-accent transition" data-en="Properties" data-hy="Գույքեր">Properties</a>
-                    <a href="#services" class="nav-link text-white hover:text-accent transition" data-en="Services" data-hy="Ծառայություններ">Services</a>
-                    <a href="#testimonials" class="nav-link text-white hover:text-accent transition" data-en="Testimonials" data-hy="Կարծիքներ">Testimonials</a>
-                    <a href="#contact" class="nav-link text-white hover:text-accent transition" data-en="Contact" data-hy="Կապ">Contact</a>
-                </div>
+  <div class="hero">
+    <div class="overlay"></div>
 
-                <div class="flex items-center space-x-4">
-                    <button id="langToggle" class="px-3 py-1 border border-accent text-accent rounded-full text-sm hover:bg-accent hover:text-white transition" onclick="toggleLanguage()">
-                        HY
-                    </button>
-                    <a href="#contact" class="hidden md:inline-block btn-primary px-6 py-2 rounded-full text-white font-semibold text-sm" data-en="Get Started" data-hy="Սկսել">Get Started</a>
-                    <button class="md:hidden text-white text-2xl" onclick="toggleMobileMenu()">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div class="hero-content">
+      <p class="small-title">Together with their families</p>
+      <h1>Vache & Sona</h1>
+      <p class="subtitle">Are getting married</p>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-dark/95 z-50 md:hidden">
-        <div class="flex flex-col h-full p-8">
-            <div class="flex justify-between items-center mb-12">
-                <span class="text-2xl font-bold text-white">MILON</span>
-                <button onclick="toggleMobileMenu()" class="text-white text-2xl"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="flex flex-col space-y-6">
-                <a href="#home" class="text-white text-xl hover:text-accent transition" onclick="toggleMobileMenu()" data-en="Home" data-hy="Գլխավոր">Home</a>
-                <a href="#about" class="text-white text-xl hover:text-accent transition" onclick="toggleMobileMenu()" data-en="About" data-hy="Մեր Մասին">About</a>
-                <a href="#properties" class="text-white text-xl hover:text-accent transition" onclick="toggleMobileMenu()" data-en="Properties" data-hy="Գույքեր">Properties</a>
-                <a href="#services" class="text-white text-xl hover:text-accent transition" onclick="toggleMobileMenu()" data-en="Services" data-hy="Ծառայություններ">Services</a>
-                <a href="#contact" class="text-white text-xl hover:text-accent transition" onclick="toggleMobileMenu()" data-en="Contact" data-hy="Կապ">Contact</a>
-            </div>
-        </div>
+      <div class="date-box">
+        27 • 10 • 2026
+      </div>
+
+      <p class="time">Wedding starts at 12:00</p>
+
+      <a href="#details" class="btn">View Wedding Details</a>
     </div>
+  </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-bg min-h-screen flex items-center relative">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark/50"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="text-white">
-                    <div class="inline-block px-4 py-1 bg-accent/20 rounded-full text-accent text-sm font-semibold mb-6" data-en="🏠 Premium Real Estate in Armenia" data-hy="🏠 Պրեմիում Անշարժ Գույք Հայաստանում">🏠 Premium Real Estate in Armenia</div>
-                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6" data-en="Find Your Dream Property in the Heart of Armenia" data-hy="Գտեք Ձեր Երազանքների Գույքը Հայաստանի Սրտում">
-                        Find Your Dream Property in the Heart of Armenia
-                    </h1>
-                    <p class="text-lg text-gray-300 mb-8 leading-relaxed" data-en="With over 15 years of experience, Milon Real Estate is your trusted partner for buying, selling, and renting premium properties across Yerevan and all regions of Armenia." data-hy="Ավելի քան 15 տարվա փորձով, Միլոն Անշարժ Գույքը ձեր վստահելի գործընկերն է Երևանի և Հայաստանի բոլոր մարզերում պրեմիում գույքեր գնելու, վաճառելու և վարձակալելու համար:">
-                        With over 15 years of experience, Milon Real Estate is your trusted partner for buying, selling, and renting premium properties across Yerevan and all regions of Armenia.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#properties" class="btn-primary px-8 py-4 rounded-full text-white font-bold text-lg" data-en="Browse Properties" data-hy="Դիտել Գույքերը">Browse Properties</a>
-                        <a href="#contact" class="px-8 py-4 border-2 border-white rounded-full text-white font-bold text-lg hover:bg-white hover:text-dark transition" data-en="Contact Us" data-hy="Կապ Մեզ Հետ">Contact Us</a>
-                    </div>
-                </div>
-                <div class="hidden md:block">
-                    <div class="relative float-anim">
-                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
-                            <h3 class="text-white text-xl font-bold mb-6" data-en="Quick Property Search" data-hy="Արագ Որոնում">Quick Property Search</h3>
-                            <div class="space-y-4">
-                                <select id="searchType" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-accent">
-                                    <option value="" class="text-dark" data-en="Property Type" data-hy="Գույքի Տեսակ">Property Type</option>
-                                    <option value="apartment" class="text-dark" data-en="Apartment" data-hy="Բնակարան">Apartment</option>
-                                    <option value="house" class="text-dark" data-en="House" data-hy="Տուն">House</option>
-                                    <option value="villa" class="text-dark" data-en="Villa" data-hy="Վիլլա">Villa</option>
-                                    <option value="commercial" class="text-dark" data-en="Commercial" data-hy="Առևտրային">Commercial</option>
-                                    <option value="land" class="text-dark" data-en="Land" data-hy="Հողամաս">Land</option>
-                                </select>
-                                <select id="searchLocation" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-accent">
-                                    <option value="" class="text-dark" data-en="Location" data-hy="Վայր">Location</option>
-                                    <option value="yerevan" class="text-dark">Yerevan | Երևան</option>
-                                    <option value="sevan" class="text-dark">Sevan | Սևան</option>
-                                    <option value="tsaghkadzor" class="text-dark">Tsaghkadzor | Ծաղկաձոր</option>
-                                    <option value="dilijan" class="text-dark">Dilijan | Դիլիջան</option>
-                                    <option value="gyumri" class="text-dark">Gyumri | Գյումրի</option>
-                                </select>
-                                <select id="searchBudget" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-accent">
-                                    <option value="" class="text-dark" data-en="Budget Range" data-hy="Բյուջե">Budget Range</option>
-                                    <option value="50k" class="text-dark">Under $50,000</option>
-                                    <option value="100k" class="text-dark">$50,000 - $100,000</option>
-                                    <option value="200k" class="text-dark">$100,000 - $200,000</option>
-                                    <option value="500k" class="text-dark">$200,000 - $500,000</option>
-                                    <option value="1m" class="text-dark">$500,000+</option>
-                                </select>
-                                <button onclick="searchProperties()" class="w-full btn-primary py-3 rounded-xl text-white font-bold text-lg" data-en="Search" data-hy="Որոնել">
-                                    Search
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Stats Bar -->
-        <div class="absolute bottom-0 left-0 right-0 bg-white/10 backdrop-blur-lg border-t border-white/20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
-                    <div>
-                        <div class="text-3xl font-bold text-accent counter" id="counter1">500+</div>
-                        <div class="text-sm text-gray-300" data-en="Properties Sold" data-hy="Վաճառված Գույքեր">Properties Sold</div>
-                    </div>
-                    <div>
-                        <div class="text-3xl font-bold text-accent counter" id="counter2">15+</div>
-                        <div class="text-sm text-gray-300" data-en="Years Experience" data-hy="Տարվա Փորձ">Years Experience</div>
-                    </div>
-                    <div>
-                        <div class="text-3xl font-bold text-accent counter" id="counter3">1200+</div>
-                        <div class="text-sm text-gray-300" data-en="Happy Clients" data-hy="Երջանիկ Հաճախորդներ">Happy Clients</div>
-                    </div>
-                    <div>
-                        <div class="text-3xl font-bold text-accent counter" id="counter4">25</div>
-                        <div class="text-sm text-gray-300" data-en="Expert Agents" data-hy="Փորձառու Գործակալներ">Expert Agents</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="countdown">
+    <h2>Counting Every Moment</h2>
+    <p>Until our special day</p>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="slide-in-left">
-                    <div class="relative">
-                        <div class="rounded-3xl overflow-hidden shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="About Milon Real Estate" class="w-full h-[500px] object-cover">
-                        </div>
-                        <div class="absolute -bottom-6 -right-6 bg-accent text-white p-6 rounded-2xl shadow-xl">
-                            <div class="text-4xl font-bold">15+</div>
-                            <div class="text-sm" data-en="Years of Trust" data-hy="Տարվա Վստահություն">Years of Trust</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide-in-right">
-                    <div class="inline-block px-4 py-1 bg-primary/10 rounded-full text-primary text-sm font-semibold mb-4" data-en="ABOUT US" data-hy="ՄԵՐ ՄԱՍԻՆ">ABOUT US</div>
-                    <h2 class="text-4xl font-bold mb-6" data-en="Your Trusted Real Estate Partner in Armenia" data-hy="Ձեր Վստահելի Անշարժ Գույքի Գործընկերը Հայաստանում">
-                        Your Trusted Real Estate Partner in Armenia
-                    </h2>
-                    <div class="section-divider mb-6"></div>
-                    <p class="text-gray-600 leading-relaxed mb-6" data-en="Founded in 2009, Milon Real Estate has established itself as one of Armenia's leading real estate agencies. We specialize in residential and commercial properties, offering comprehensive services from property search to legal documentation." data-hy="Հիմնադրված 2009 թվականին, Միլոն Անշարժ Գույքը հաստատել է իրեն որպես Հայաստանի առաջատար անշարժ գույքի գործակալություններից մեկը։ Մենք մասնագիտացած ենք բնակելի և առևտրային գույքերում՝ առաջարկելով համապարփակ ծառայություններ գույքի որոնումից մինչև իրավական փաստաթղթեր:">
-                        Founded in 2009, Milon Real Estate has established itself as one of Armenia's leading real estate agencies. We specialize in residential and commercial properties, offering comprehensive services from property search to legal documentation.
-                    </p>
-                    <p class="text-gray-600 leading-relaxed mb-8" data-en="Our team of certified professionals is dedicated to finding the perfect property for every client, whether you're looking for a modern apartment in central Yerevan, a lakeside home in Sevan, or commercial space for your business." data-hy="Մեր սերտիֆիկացված մասնագետների թիմը նվիրված է յուրաքանչյուր հաճախորդի համար կատարյալ գույք գտնելուն, անկախ նրանից՝ դուք փնտրում եք ժամանակակից բնակարան Երևանի կենտրոնում, լճափնյա տուն Սևանում, թե առևտրային տարածք ձեր բիզնեսի համար:">
-                        Our team of certified professionals is dedicated to finding the perfect property for every client, whether you're looking for a modern apartment in central Yerevan, a lakeside home in Sevan, or commercial space for your business.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="flex items-start space-x-3">
-                            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-shield-alt text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold" data-en="Licensed Agency" data-hy="Լիցենզավորված Գործակալություն">Licensed Agency</h4>
-                                <p class="text-sm text-gray-500" data-en="Fully certified" data-hy="Լիովին սերտիֆիկացված">Fully certified</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-handshake text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold" data-en="Trusted Service" data-hy="Վստահելի Ծառայություն">Trusted Service</h4>
-                                <p class="text-sm text-gray-500" data-en="1200+ satisfied clients" data-hy="1200+ գոհ հաճախորդներ">1200+ satisfied clients</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-map-marker-alt text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold" data-en="All Armenia" data-hy="Ամբողջ Հայաստան">All Armenia</h4>
-                                <p class="text-sm text-gray-500" data-en="Nationwide coverage" data-hy="Համազգային ծածկույթ">Nationwide coverage</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-clock text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold" data-en="24/7 Support" data-hy="24/7 Աջակցություն">24/7 Support</h4>
-                                <p class="text-sm text-gray-500" data-en="Always available" data-hy="Միշտ հասանելի">Always available</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Properties Section -->
-    <section id="properties" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in">
-                <div class="inline-block px-4 py-1 bg-accent/10 rounded-full text-accent text-sm font-semibold mb-4" data-en="PROPERTIES" data-hy="ԳՈՒՅՔԵՐ">PROPERTIES</div>
-                <h2 class="text-4xl font-bold mb-4" data-en="Featured Properties" data-hy="Առաջարկվող Գույքեր">Featured Properties</h2>
-                <div class="section-divider mx-auto mb-6"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto" data-en="Explore our handpicked selection of premium properties across Armenia's most sought-after locations." data-hy="Ուսումնասիրեք Հայաստանի ամենահայտնի վայրերում պրեմիում գույքերի մեր ընտրանին:">
-                    Explore our handpicked selection of premium properties across Armenia's most sought-after locations.
-                </p>
-            </div>
-
-            <!-- Filter Tabs -->
-            <div class="flex flex-wrap justify-center gap-3 mb-12 fade-in">
-                <button onclick="filterProperties('all')" class="filter-btn active px-6 py-2 rounded-full text-sm font-semibold transition bg-primary text-white" data-filter="all" data-en="All" data-hy="Բոլորը">All</button>
-                <button onclick="filterProperties('apartment')" class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition bg-white text-gray-600 hover:bg-primary hover:text-white" data-filter="apartment" data-en="Apartments" data-hy="Բնակարաններ">Apartments</button>
-                <button onclick="filterProperties('house')" class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition bg-white text-gray-600 hover:bg-primary hover:text-white" data-filter="house" data-en="Houses" data-hy="Տներ">Houses</button>
-                <button onclick="filterProperties('villa')" class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition bg-white text-gray-600 hover:bg-primary hover:text-white" data-filter="villa" data-en="Villas" data-hy="Վիլլաներ">Villas</button>
-                <button onclick="filterProperties('commercial')" class="filter-btn px-6 py-2 rounded-full text-sm font-semibold transition bg-white text-gray-600 hover:bg-primary hover:text-white" data-filter="commercial" data-en="Commercial" data-hy="Առևտրային">Commercial</button>
-            </div>
-
-            <!-- Properties Grid -->
-            <div id="propertiesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Property 1 -->
-                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300" data-type="apartment">
-                    <div class="relative overflow-hidden h-64">
-                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600" alt="Luxury Apartment Yerevan" class="property-img w-full h-full object-cover">
-                        <div class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-semibold" data-en="Featured" data-hy="Առաջարկ">Featured</div>
-                        <div class="absolute top-4 right-4 bg-white/90 text-dark px-3 py-1 rounded-full text-sm font-bold">$185,000</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2" data-en="Luxury Apartment in Kentron" data-hy="Շքեղ Բնակարան Կենտրոնում">Luxury Apartment in Kentron</h3>
-                        <p class="text-gray-500 text-sm mb-4"><i class="fas fa-map-marker-alt text-accent mr-1"></i> Kentron, Yerevan</p>
-                        <div class="flex justify-between text-sm text-gray-500 mb-4">
-                            <span><i class="fas fa-bed mr-1"></i> 3 <span data-en="Beds" data-hy="Սենյակ">Beds</span></span>
-                            <span><i class="fas fa-bath mr-1"></i> 2 <span data-en="Baths" data-hy="Լոգարան">Baths</span></span>
-                            <span><i class="fas fa-ruler-combined mr-1"></i> 120 <span data-en="m²" data-hy="մ²">m²</span></span>
-                        </div>
-                        <div class="flex justify-between items-center pt-4 border-t">
-                            <span class="text-accent font-bold" data-en="For Sale" data-hy="Վաճառք">For Sale</span>
-                            <button onclick="openPropertyModal(1)" class="px-4 py-2 bg-primary text-white rounded-lg text-sm hover:bg-primary/80 transition" data-en="View Details" data-hy="Դիտել">View Details</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 2 -->
-                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300" data-type="villa">
-                    <div class="relative overflow-hidden h-64">
-                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600" alt="Villa Sevan" class="property-img w-full h-full object-cover">
-                        <div class="absolute top-4 left-4 bg-secondary text-white px-3 py-1 rounded-full text-sm font-semibold" data-en="New" data-hy="Նոր">New</div>
-                        <div class="absolute top-4 right-4 bg-white/90 text-dark px-3 py-1 rounded-full text-sm font-bold">$450,000</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2" data-en="Lake View Villa in Sevan" data-hy="Լճի Տեսքով Վիլլա Սևանում">Lake View Villa in Sevan</h3>
-                        <p class="text-gray-500 text-sm mb-4"><i class="fas fa-map-marker-alt text-accent mr-1"></i> Sevan, Armenia</p>
-                        <div class="flex justify-between text-sm text-gray-500 mb-4">
-                            <span><i class="fas fa-bed mr-1"></i> 5 <span data-en="Beds" data-hy="Սենյակ">Beds</span></span>
-                            <span><i class="fas fa-bath mr-1"></i> 3 <span data-en="Baths" data-hy="Լոգարան">Baths</span></span>
-                            <span><i class="fas fa-ruler-combined mr-1"></i> 320 <span data-en="m²" data-hy="մ²">m²</span></span>
-                        </div>
-                        <div class="flex justify-between items-center pt-4 border-t">
-                            <span class="text-accent font-bold" data-en="For Sale" data-hy="Վաճառք">For Sale</span>
-                            <button onclick="openPropertyModal(2)" class="px-4 py-2 bg-primary text-white rounded-lg text-sm hover:bg-primary/80 transition" data-en="View Details" data-hy="Դիտել">View Details</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 3 -->
-                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300" data-type="apartment">
-                    <div class="relative overflow-hidden h-64">
-                        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600" alt="Modern Apartment" class="property-img w-full h-full object-cover">
-                        <div class="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold" data-en="Rent" data-hy="Վարձակալություն">Rent</div>
-                        <div class="absolute top-4 right-4 bg-white/90 text-dark px-3 py-1 rounded-full text-sm font-bold">$1,200/mo</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2" data-en="Modern Apartment on Abovyan" data-hy="Ժամանակակից Բնակարան Աբովյան Փող.">Modern Apartment on Abovyan</h3>
-                        <p class="text-gray-500 text-sm mb-4"><i class="fas fa-map-marker-alt text-accent mr-1"></i> Abovyan St., Yerevan</p>
-                        <div class="flex justify-between text-sm text-gray-500 mb-4">
-                            <span><i class="fas fa-bed mr-1"></i> 2 <span data-en="Beds" data-hy="Սենյակ">Beds</span></span>
-                            <span><i class="fas fa-bath mr-1"></i> 1 <span data-en="Baths" data-hy="Լոգարան">Baths</span></span>
-                            <span><i class="fas fa-ruler-combined mr-1"></i> 85 <span data-en="m²" data-hy="մ²">m²</span></span>
-                        </div>
-                        <div class="flex justify-between items-center pt-4 border-t">
-                            <span class="text-accent font-bold" data-en="For Rent" data-hy="Վարձակալություն">For Rent</span>
-                            <button onclick="openPropertyModal(3)" class="px-4 py-2 bg-primary text-white rounded-lg text-sm hover:bg-primary/80 transition" data-en="View Details" data-hy="Դիտել">View Details</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 4 -->
-                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300" data-type="house">
-                    <div class="relative overflow-hidden h-64">
-                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600" alt="House Dilijan" class="property-img w-full h-full object-cover">
-                        <div class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-semibold" data-en="Featured" data-hy="Առաջարկ">Featured</div>
-                        <div class="absolute top-4 right-4 bg-white/90 text-dark px-3 py-1 rounded-full text-sm font-bold">$280,000</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2" data-en="Forest House in Dilijan" data-hy="Անտառային Տուն Դիլիջանում">Forest House in Dilijan</h3>
-                        <p class="text-gray-500 text-sm mb-4"><i class="fas fa-map-marker-alt text-accent mr-1"></i> Dilijan, Armenia</p>
-                        <div class="flex justify-between text-sm text-gray-500 mb-4">
-                            <span><i class="fas fa-bed mr-1"></i> 4 <span data-en="Beds" data-hy="Սենյակ">Beds</span></span>
-                            <span><i class="fas fa-bath mr-1"></i> 2 <span data-en="Baths" data-hy="Լոգարան">Baths</span></span>
-                            <span><i class="fas fa-ruler-combined mr-1"></i> 220 <span data-en="m²" data-hy="մ²">m²</span></span>
-                        </div>
-                        <div class="flex justify-between items-center pt-4 border-t">
-                            <span class="text-accent font-bold" data-en="For Sale" data-hy="Վաճառք">For Sale</span>
-                            <button onclick="openPropertyModal(4)" class="px-4 py-2 bg-primary text-white rounded-lg text-sm hover:bg-primary/80 transition" data-en="View Details" data-hy="Դիտել">View Details</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 5 -->
-                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300" data-type="commercial">
-                    <div class="relative overflow-hidden h-64">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600" alt="Office Space" class="property-img w-full h-full object-cover">
-                        <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold" data-en="Hot Deal" data-hy="Տաք Առաջարկ">Hot Deal</div>
-                        <div class="absolute top-4 right-4 bg-white/90 text-dark px-3 py-1 rounded-full text-sm font-bold">$350,000</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2" data-en="Premium Office Space" data-hy="Պրեմիում Գրասենյակային Տարածք">Premium Office Space</h3>
-                        <p class="text-gray-500 text-sm mb-4"><i class="fas fa-map-marker-alt text-accent mr-1"></i> Northern Ave., Yerevan</p>
-                        <div class="flex justify-between text-sm text-gray-500 mb-4">
-                            <span><i class="fas fa-door-open mr-1"></i> 8 <span data-en="Rooms" data-hy="Սենյակ">Rooms</span></span>
-                            <span><i class="fas fa-bath mr-1"></i> 3 <span data-en="Baths" data-hy="Լոգարան">Baths</span></span>
-                            <span><i class="fas fa-ruler-combined mr-1"></i> 400 <span data-en="m²" data-hy="մ²">m²</span></span>
-                        </div>
-                        <div class="flex justify-between items-center pt-4 border-t">
-                            <span class="text-accent font-bold" data-en="For Sale" data-hy="Վաճառք">For Sale</span>
-                            <button onclick="openPropertyModal(5)" class="px-4 py-2 bg-primary text-white rounded-lg text-sm hover:bg-primary/80 transition" data-en="View Details" data-hy="Դիտել">View Details</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 6 -->
-                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300" data-type="villa">
-                    <div class="relative overflow-hidden h-64">
-                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600" alt="Villa Tsaghkadzor" class="property-img w-full h-full object-cover">
-                        <div class="absolute top-4 left-4 bg-secondary text-white px-3 py-1 rounded-full text-sm font-semibold" data-en="New" data-hy="Նոր">New</div>
-                        <div class="absolute top-4 right-4 bg-white/90 text-dark px-3 py-1 rounded-full text-sm font-bold">$620,000</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2" data-en="Mountain Villa in Tsaghkadzor" data-hy="Լեռնային Վիլլա Ծաղկաձորում">Mountain Villa in Tsaghkadzor</h3>
-                        <p class="text-gray-500 text-sm mb-4"><i class="fas fa-map-marker-alt text-accent mr-1"></i> Tsaghkadzor, Armenia</p>
-                        <div class="flex justify-between text-sm text-gray-500 mb-4">
-                            <span><i class="fas fa-bed mr-1"></i> 6 <span data-en="Beds" data-hy="Սենյակ">Beds</span></span>
-                            <span><i class="fas fa-bath mr-1"></i> 4 <span data-en="Baths" data-hy="Լոգարան">Baths</span></span>
-                            <span><i class="fas fa-ruler-combined mr-1"></i> 450 <span data-en="m²" data-hy="մ²">m²</span></span>
-                        </div>
-                        <div class="flex justify-between items-center pt-4 border-t">
-                            <span class="text-accent font-bold" data-en="For Sale" data-hy="Վաճառք">For Sale</span>
-                            <button onclick="openPropertyModal(6)" class="px-4 py-2 bg-primary text-white rounded-lg text-sm hover:bg-primary/80 transition" data-en="View Details" data-hy="Դիտել">View Details</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-12 fade-in">
-                <button class="px-10 py-4 border-2 border-primary text-primary rounded-full font-bold hover:bg-primary hover:text-white transition" data-en="View All Properties" data-hy="Դիտել Բոլոր Գույքերը">
-                    View All Properties
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in">
-                <div class="inline-block px-4 py-1 bg-primary/10 rounded-full text-primary text-sm font-semibold mb-4" data-en="OUR SERVICES" data-hy="ՄԵՐ ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐԸ">OUR SERVICES</div>
-                <h2 class="text-4xl font-bold mb-4" data-en="What We Offer" data-hy="Ինչ Մենք Առաջարկում Ենք">What We Offer</h2>
-                <div class="section-divider mx-auto mb-6"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto" data-en="Comprehensive real estate services tailored to your needs, from property search to final documentation." data-hy="Համապարփակ անշարժ գույքի ծառայություններ՝ հարմարեցված ձեր կարիքներին, գույքի որոնումից մինչև վերջնական փաստաթղթեր:">
-                    Comprehensive real estate services tailored to your needs, from property search to final documentation.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group p-8 rounded-2xl bg-gray-50 hover:bg-primary transition-all duration-300 hover:shadow-xl fade-in">
-                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition">
-                        <i class="fas fa-search text-primary text-2xl group-hover:text-white transition"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3" data-en="Property Search" data-hy="Գույքի Որոնում">Property Search</h3>
-                    <p class="text-gray-600 group-hover:text-gray-200" data-en="Our advanced database and expert agents help you find the perfect property matching your criteria and budget." data-hy="Մեր առաջադեմ տվյալների բազան և փորձառու գործակալները օգնում են գտնել կատարյալ գույք՝ համապատասխան ձեր չափանիշներին և բյուջեին:">
-                        Our advanced database and expert agents help you find the perfect property matching your criteria and budget.
-                    </p>
-                </div>
-
-                <div class="group p-8 rounded-2xl bg-gray-50 hover:bg-primary transition-all duration-300 hover:shadow-xl fade-in">
-                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition">
-                        <i class="fas fa-file-contract text-primary text-2xl group-hover:text-white transition"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3" data-en="Legal Support" data-hy="Իրավական Աջակցություն">Legal Support</h3>
-                    <p class="text-gray-600 group-hover:text-gray-200" data-en="Complete legal assistance for property transactions, including documentation, registration, and compliance." data-hy="Լիարժեք իրավական աջակցություն գույքի գործարքների համար, ներառյալ փաստաթղթեր, գրանցում և համապատասխանություն:">
-                        Complete legal assistance for property transactions, including documentation, registration, and compliance.
-                    </p>
-                </div>
-
-                <div class="group p-8 rounded-2xl bg-gray-50 hover:bg-primary transition-all duration-300 hover:shadow-xl fade-in">
-                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition">
-                        <i class="fas fa-chart-line text-primary text-2xl group-hover:text-white transition"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3" data-en="Property Valuation" data-hy="Գույքի Գնահատում">Property Valuation</h3>
-                    <p class="text-gray-600 group-hover:text-gray-200" data-en="Professional property valuation services using market analysis and comparable sales data." data-hy="Պրոֆեսիոնալ գույքի գնահատման ծառայություններ՝ օգտագործելով շուկայական վերլուծություն և համադրելի վաճառքի տվյալներ:">
-                        Professional property valuation services using market analysis and comparable sales data.
-                    </p>
-                </div>
-
-                <div class="group p-8 rounded-2xl bg-gray-50 hover:bg-primary transition-all duration-300 hover:shadow-xl fade-in">
-                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition">
-                        <i class="fas fa-home text-primary text-2xl group-hover:text-white transition"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3" data-en="Property Management" data-hy="Գույքի Կառավարում">Property Management</h3>
-                    <p class="text-gray-600 group-hover:text-gray-200" data-en="Full-service property management for landlords, including tenant screening, maintenance, and rent collection." data-hy="Լիարժեք գույքի կառավարում վարձատուների համար, ներառյալ վարձակալների ընտրություն, սպասարկում և վարձավճարի հավաքում:">
-                        Full-service property management for landlords, including tenant screening, maintenance, and rent collection.
-                    </p>
-                </div>
-
-                <div class="group p-8 rounded-2xl bg-gray-50 hover:bg-primary transition-all duration-300 hover:shadow-xl fade-in">
-                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition">
-                        <i class="fas fa-tools text-primary text-2xl group-hover:text-white transition"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3" data-en="Renovation & Design" data-hy="Վերանորոգում և Դիզայն">Renovation & Design</h3>
-                    <p class="text-gray-600 group-hover:text-gray-200" data-en="Interior design and renovation services to transform your property into your dream home." data-hy="Ինտերիերի դիզայնի և վերանորոգման ծառայություններ՝ ձեր գույքը երազանքների տուն վերածելու համար:">
-                        Interior design and renovation services to transform your property into your dream home.
-                    </p>
-                </div>
-
-                <div class="group p-8 rounded-2xl bg-gray-50 hover:bg-primary transition-all duration-300 hover:shadow-xl fade-in">
-                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition">
-                        <i class="fas fa-globe text-primary text-2xl group-hover:text-white transition"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3" data-en="Investment Advisory" data-hy="Ներդրումների Խորհրդատվություն">Investment Advisory</h3>
-                    <p class="text-gray-600 group-hover:text-gray-200" data-en="Expert guidance for real estate investments, helping you maximize returns and minimize risks." data-hy="Փորձառու ուղեցույց անշարժ գույքի ներդրումների համար, օգնում է առավելագույնի հասցնել եկամուտները և նվազագույնի հասցնել ռիսկերը:">
-                        Expert guidance for real estate investments, helping you maximize returns and minimize risks.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us -->
-    <section class="py-24 bg-primary relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-20 left-10 w-40 h-40 bg-accent rounded-full blur-3xl"></div>
-            <div class="absolute bottom-20 right-10 w-60 h-60 bg-secondary rounded-full blur-3xl"></div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="text-white slide-in-left">
-                    <div class="inline-block px-4 py-1 bg-accent/20 rounded-full text-accent text-sm font-semibold mb-4" data-en="WHY CHOOSE US" data-hy="ԻՆՉՈՒ ԸՆՏՐԵԼ ՄԵԶ">WHY CHOOSE US</div>
-                    <h2 class="text-4xl font-bold mb-6" data-en="The Milon Advantage" data-hy="Միլոնի Առավելությունը">The Milon Advantage</h2>
-                    <div class="section-divider mb-8"></div>
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <span class="text-accent font-bold text-xl">01</span>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold mb-2" data-en="Local Expertise" data-hy="Տեղական Փորձաքննություն">Local Expertise</h4>
-                                <p class="text-gray-300" data-en="Deep knowledge of Armenia's real estate market with insights into emerging neighborhoods and investment opportunities." data-hy="Հայաստանի անշարժ գույքի շուկայի խորը գիտելիքներ՝ իմացություններ զարգացող թաղամասերի և ներդրումների հնարավորությունների վերաբերյալ:">
-                                    Deep knowledge of Armenia's real estate market with insights into emerging neighborhoods and investment opportunities.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <span class="text-accent font-bold text-xl">02</span>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold mb-2" data-en="Transparent Pricing" data-hy="Թափանցիկ Գնագոյացում">Transparent Pricing</h4>
-                                <p class="text-gray-300" data-en="No hidden fees. We provide clear, upfront pricing for all our services and properties." data-hy="Ոչ մի թաքնված վճար: Մենք տրամադրում ենք պարզ, բաց գնագոյացում բոլոր մեր ծառայությունների և գույքերի համար:">
-                                    No hidden fees. We provide clear, upfront pricing for all our services and properties.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <span class="text-accent font-bold text-xl">03</span>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold mb-2" data-en="Multilingual Team" data-hy="Բազմալեզու Թիմ">Multilingual Team</h4>
-                                <p class="text-gray-300" data-en="Our team speaks Armenian, English, Russian, and French to serve international clients." data-hy="Մեր թիմը խոսում է հայերեն, անգլերեն, ռուսերեն և ֆրանսերեն՝ միջազգային հաճախորդներին սպասարկելու համար:">
-                                    Our team speaks Armenian, English, Russian, and French to serve international clients.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <span class="text-accent font-bold text-xl">04</span>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold mb-2" data-en="After-Sale Support" data-hy="Վաճառքից Հետո Աջակցություն">After-Sale Support</h4>
-                                <p class="text-gray-300" data-en="We continue to support you even after the deal is closed, ensuring complete satisfaction." data-hy="Մենք շարունակում ենք աջակցել ձեզ նույնիսկ գործարքը փակելուց հետո՝ ապահովելով լիակատար բավարարվածություն:">
-                                    We continue to support you even after the deal is closed, ensuring complete satisfaction.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide-in-right">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center border border-white/10">
-                            <div class="text-4xl font-bold text-accent mb-2 counter" id="counter5">98%</div>
-                            <div class="text-white text-sm" data-en="Client Satisfaction" data-hy="Հաճախորդների Բավարարվածություն">Client Satisfaction</div>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center border border-white/10 mt-8">
-                            <div class="text-4xl font-bold text-accent mb-2 counter" id="counter6">500+</div>
-                            <div class="text-white text-sm" data-en="Deals Closed" data-hy="Փակված Գործարքներ">Deals Closed</div>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center border border-white/10">
-                            <div class="text-4xl font-bold text-accent mb-2 counter" id="counter7">15+</div>
-                            <div class="text-white text-sm" data-en="Years Active" data-hy="Տարիներ Ակտիվ">Years Active</div>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center border border-white/10 mt-8">
-                            <div class="text-4xl font-bold text-accent mb-2 counter" id="counter8">100%</div>
-                            <div class="text-white text-sm" data-en="Legal Compliance" data-hy="Իրավական Համապատասխանություն">Legal Compliance</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section id="testimonials" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in">
-                <div class="inline-block px-4 py-1 bg-accent/10 rounded-full text-accent text-sm font-semibold mb-4" data-en="TESTIMONIALS" data-hy="ԿԱՐԾԻՔՆԵՐ">TESTIMONIALS</div>
-                <h2 class="text-4xl font-bold mb-4" data-en="What Our Clients Say" data-hy="Ինչ Մեր Հաճախորդներն Են Ասում">What Our Clients Say</h2>
-                <div class="section-divider mx-auto mb-6"></div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-lg fade-in">
-                    <div class="flex text-accent mb-4">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-gray-600 mb-6 italic" data-en="&quot;Milon Real Estate made our home buying process incredibly smooth. Their team was professional, responsive, and truly understood our needs. Highly recommended!&quot;" data-hy="&quot;Միլոն Անշարժ Գույքը մեր տուն գնելու գործընթացը դարձրեց չափազանց հարթ: Նրանց թիմը պրոֆեսիոնալ էր, արձագանքող և իսկապես հասկացավ մեր կարիքները: Խիստ խորհուրդ ենք տալիս:&quot;">
-                        "Milon Real Estate made our home buying process incredibly smooth. Their team was professional, responsive, and truly understood our needs. Highly recommended!"
-                    </p>
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">AH</div>
-                        <div>
-                            <h4 class="font-bold">Armen Hakobyan</h4>
-                            <p class="text-sm text-gray-500" data-en="Homeowner, Yerevan" data-hy="Տան Սեփականատեր, Երևան">Homeowner, Yerevan</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-2xl shadow-lg fade-in">
-                    <div class="flex text-accent mb-4">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-gray-600 mb-6 italic" data-en="&quot;As a diaspora Armenian looking to invest back home, Milon provided exceptional service. They handled everything remotely and I couldn't be happier with my new property.&quot;" data-hy="&quot;Որպես սփյուռքահայ, ով ցանկանում էր ներդնել հայրենիքում, Միլոնը բացառիկ ծառայություն մատուցեց: Նրանք ամեն ինչ կարգավորեցին հեռավար, և ես չէի կարող ավելի գոհ լինել իմ նոր գույքից:&quot;">
-                        "As a diaspora Armenian looking to invest back home, Milon provided exceptional service. They handled everything remotely and I couldn't be happier with my new property."
-                    </p>
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-bold">SK</div>
-                        <div>
-                            <h4 class="font-bold">Sara Krikorian</h4>
-                            <p class="text-sm text-gray-500" data-en="Investor, Los Angeles" data-hy="Ներդրող, Լոս Անջելես">Investor, Los Angeles</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-2xl shadow-lg fade-in">
-                    <div class="flex text-accent mb-4">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="text-gray-600 mb-6 italic" data-en="&quot;We needed commercial space for our tech startup. Milon found us the perfect office in Yerevan's IT district within our budget. Their market knowledge is unmatched.&quot;" data-hy="&quot;Մեզ պետք էր առևտրային տարածք մեր տեխնոլոգիական ստարտափի համար: Միլոնը գտավ կատարյալ գրասենյակ Երևանի IT շրջանում՝ մեր բյուջեի շրջանակներում: Նրանց շուկայական գիտելիքը անհամեմատելի է:&quot;">
-                        "We needed commercial space for our tech startup. Milon found us the perfect office in Yerevan's IT district within our budget. Their market knowledge is unmatched."
-                    </p>
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold">DG</div>
-                        <div>
-                            <h4 class="font-bold">David Grigoryan</h4>
-                            <p class="text-sm text-gray-500" data-en="CEO, TechArmenia" data-hy="Գլխավոր Տնօրեն, TechArmenia">CEO, TechArmenia</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary to-dark"></div>
-        <div class="absolute inset-0 opacity-20">
-            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1920" class="w-full h-full object-cover" alt="CTA Background">
-        </div>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center text-white">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 fade-in" data-en="Ready to Find Your Dream Property?" data-hy="Պատրա՞ստ Եք Գտնել Ձեր Երազանքների Գույքը:">
-                Ready to Find Your Dream Property?
-            </h2>
-            <p class="text-xl text-gray-300 mb-10 fade-in" data-en="Contact us today and let our experts guide you through the process of finding the perfect property in Armenia." data-hy="Կապվեք մեզ հետ այսօր և թույլ տվեք մեր փորձագետներին ուղղորդել ձեզ Հայաստանում կատարյալ գույք գտնելու գործընթացում:">
-                Contact us today and let our experts guide you through the process of finding the perfect property in Armenia.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4 fade-in">
-                <a href="#contact" class="btn-primary px-10 py-4 rounded-full text-white font-bold text-lg" data-en="Schedule Consultation" data-hy="Նախապես Խորհրդատվություն">Schedule Consultation</a>
-                <a href="tel:+37410123456" class="px-10 py-4 border-2 border-white rounded-full text-white font-bold text-lg hover:bg-white hover:text-dark transition">
-                    <i class="fas fa-phone mr-2"></i> +374 10 123 456
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in">
-                <div class="inline-block px-4 py-1 bg-primary/10 rounded-full text-primary text-sm font-semibold mb-4" data-en="CONTACT US" data-hy="ԿԱՊ ՄԵԶ ՀԵՏ">CONTACT US</div>
-                <h2 class="text-4xl font-bold mb-4" data-en="Get In Touch" data-hy="Կապ Մեզ Հետ">Get In Touch</h2>
-                <div class="section-divider mx-auto mb-6"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="slide-in-left">
-                    <h3 class="text-2xl font-bold mb-6" data-en="Send Us a Message" data-hy="Ուղարկեք Մեզ Հաղորդագրություն">Send Us a Message</h3>
-                    <form id="contactForm" onsubmit="submitForm(event)" class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-semibold mb-2" data-en="First Name" data-hy="Անուն">First Name</label>
-                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20" data-placeholder-en="John" data-placeholder-hy="Ջոն" placeholder="John">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold mb-2" data-en="Last Name" data-hy="Ազգանուն">Last Name</label>
-                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20" data-placeholder-en="Doe" data-placeholder-hy="Դոե" placeholder="Doe">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2" data-en="Email" data-hy="Էլ. Փոստ">Email</label>
-                            <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20" placeholder="email@example.com">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2" data-en="Phone" data-hy="Հեռախոս">Phone</label>
-                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20" placeholder="+374 XX XXX XXX">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2" data-en="Subject" data-hy="Թեմա">Subject</label>
-                            <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20">
-                                <option data-en="Buy Property" data-hy="Գույք Գնել">Buy Property</option>
-                                <option data-en="Sell Property" data-hy="Գույք Վաճառել">Sell Property</option>
-                                <option data-en="Rent Property" data-hy="Գույք Վարձակալել">Rent Property</option>
-                                <option data-en="General Inquiry" data-hy="Ընդհանուր Հարցում">General Inquiry</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2" data-en="Message" data-hy="Հաղորդագրություն">Message</label>
-                            <textarea rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 resize-none" data-placeholder-en="Tell us about your requirements..." data-placeholder-hy="Մեզ պատմեք ձեր պահանջների մասին..." placeholder="Tell us about your requirements..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full btn-primary py-4 rounded-xl text-white font-bold text-lg" data-en="Send Message" data-hy="Ուղարկել Հաղորդագրությունը">
-                            Send Message
-                        </button>
-                    </form>
-                    <div id="formSuccess" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-xl text-center font-semibold">
-                        <span data-en="✅ Thank you! We'll get back to you shortly." data-hy="✅ Շնորհակալություն: Մենք կկապվենք ձեզ հետ շուտով:">✅ Thank you! We'll get back to you shortly.</span>
-                    </div>
-                </div>
-
-                <div class="slide-in-right">
-                    <h3 class="text-2xl font-bold mb-6" data-en="Contact Information" data-hy="Կապի Տվյալներ">Contact Information</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-xl">
-                            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-map-marker-alt text-white text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1" data-en="Office Address" data-hy="Գրասենյակի Հասցե">Office Address</h4>
-                                <p class="text-gray-600">14 Abovyan Street, Kentron District, Yerevan 0001, Armenia</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-xl">
-                            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-phone text-white text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1" data-en="Phone Numbers" data-hy="Հեռախոսահամարներ">Phone Numbers</h4>
-                                <p class="text-gray-600">+374 10 123 456</p>
-                                <p class="text-gray-600">+374 98 765 432</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-xl">
-                            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-envelope text-white text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1" data-en="Email" data-hy="Էլ. Փոստ">Email</h4>
-                                <p class="text-gray-600">info@milonrealestate.am</p>
-                                <p class="text-gray-600">sales@milonrealestate.am</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-xl">
-                            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-clock text-white text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1" data-en="Working Hours" data-hy="Աշխատանքային Ժամեր">Working Hours</h4>
-                                <p class="text-gray-600" data-en="Mon - Fri: 09:00 - 18:00" data-hy="Երկ - Ուրբ: 09:00 - 18:00">Mon - Fri: 09:00 - 18:00</p>
-                                <p class="text-gray-600" data-en="Sat: 10:00 - 15:00" data-hy="Շաբ: 10:00 - 15:00">Sat: 10:00 - 15:00</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Map -->
-                    <div class="mt-8 rounded-2xl overflow-hidden shadow-lg">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.4!2d44.515!3d40.179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDEwJzQ0LjQiTiA0NMKwMzAnNTQuMCJF!5e0!3m2!1sen!2sam!4v1234567890" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-
-                    <!-- Social Links -->
-                    <div class="mt-8 flex space-x-4">
-                        <a href="#" class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white hover:bg-accent transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white hover:bg-accent transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white hover:bg-accent transition"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white hover:bg-accent transition"><i class="fab fa-telegram-plane"></i></a>
-                        <a href="#" class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white hover:bg-accent transition"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div>
-                    <div class="flex items-center space-x-2 mb-6">
-                        <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                            <i class="fas fa-building text-white text-xl"></i>
-                        </div>
-                        <div>
-                            <span class="text-xl font-bold">MILON</span>
-                            <span class="text-xs text-accent block -mt-1">REAL ESTATE</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6" data-en="Your trusted partner for premium real estate in Armenia since 2009. We help you find the perfect property for your lifestyle and investment goals." data-hy="Ձեր վստահելի գործընկերը Հայաստանում պրեմիում անշարժ գույքի համար 2009 թվականից: Մենք օգնում ենք գտնել կատարյալ գույք ձեր ապրելակերպի և ներդրումային նպատակների համար:">
-                        Your trusted partner for premium real estate in Armenia since 2009. We help you find the perfect property for your lifestyle and investment goals.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-lg font-bold mb-6" data-en="Quick Links" data-hy="Արագ Հղումներ">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#home" class="text-gray-400 hover:text-accent transition" data-en="Home" data-hy="Գլխավոր">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-accent transition" data-en="About Us" data-hy="Մեր Մասին">About Us</a></li>
-                        <li><a href="#properties" class="text-gray-400 hover:text-accent transition" data-en="Properties" data-hy="Գույքեր">Properties</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-accent transition" data-en="Services" data-hy="Ծառայություններ">Services</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-accent transition" data-en="Contact" data-hy="Կապ">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-bold mb-6" data-en="Property Types" data-hy="Գույքի Տեսակներ">Property Types</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-accent transition" data-en="Apartments" data-hy="Բնակարաններ">Apartments</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-accent transition" data-en="Houses" data-hy="Տներ">Houses</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-accent transition" data-en="Villas" data-hy="Վիլլաներ">Villas</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-accent transition" data-en="Commercial" data-hy="Առևտրային">Commercial</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-accent transition" data-en="Land" data-hy="Հողամասեր">Land</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-bold mb-6" data-en="Newsletter" data-hy="Տեղեկագիր">Newsletter</h4>
-                    <p class="text-gray-400 text-sm mb-4" data-en="Subscribe to get the latest property listings and market updates." data-hy="Բաժանորդագրվեք՝ ստանալու վերջին գույքերի ցանկը և շուկայական թարմացումները:">
-                        Subscribe to get the latest property listings and market updates.
-                    </p>
-                    <form onsubmit="subscribeNewsletter(event)" class="space-y-3">
-                        <input type="email" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-accent" placeholder="Enter your email">
-                        <button type="submit" class="w-full btn-primary py-3 rounded-xl text-white font-semibold" data-en="Subscribe" data-hy="Բաժանորդագրվել">Subscribe</button>
-                    </form>
-                    <div id="newsletterSuccess" class="hidden mt-3 p-3 bg-green-500/20 text-green-400 rounded-xl text-center text-sm">
-                        <span data-en="✅ Subscribed successfully!" data-hy="✅ Հաջողությամբ բաժանորդագրվեցիք!">✅ Subscribed successfully!</span>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm">© 2024 Milon Real Estate. <span data-en="All rights reserved." data-hy="Բոլոր իրավունքները պաշտպանված են:">All rights reserved.</span></p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="text-gray-400 hover:text-accent text-sm transition" data-en="Privacy Policy" data-hy="Գաղտնիության Քաղաքականություն">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-accent text-sm transition" data-en="Terms of Service" data-hy="Ծառայության Պայմաններ">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Property Modal -->
-    <div id="propertyModal" class="fixed inset-0 bg-dark/80 z-50 hidden items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-            <div class="relative">
-                <img id="modalImage" src="" alt="Property" class="w-full h-64 md:h-80 object-cover rounded-t-2xl">
-                <button onclick="closePropertyModal()" class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-            <div class="p-8">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 id="modalTitle" class="text-2xl font-bold"></h3>
-                    <span id="modalPrice" class="text-2xl font-bold text-accent"></span>
-                </div>
-                <p id="modalLocation" class="text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-accent mr-1"></i> <span></span></p>
-                <div class="grid grid-cols-3 gap-4 mb-6">
-                    <div class="bg-gray-50 p-4 rounded-xl text-center">
-                        <i class="fas fa-bed text-primary text-xl mb-1"></i>
-                        <p id="modalBeds" class="font-bold"></p>
-                        <p class="text-sm text-gray-500" data-en="Bedrooms" data-hy="Ննջասենյակ">Bedrooms</p>
-                    </div>
-                    <div class="bg-gray-50 p-4 rounded-xl text-center">
-                        <i class="fas fa-bath text-primary text-xl mb-1"></i>
-                        <p id="modalBaths" class="font-bold"></p>
-                        <p class="text-sm text-gray-500" data-en="Bathrooms" data-hy="Լոգարան">Bathrooms</p>
-                    </div>
-                    <div class="bg-gray-50 p-4 rounded-xl text-center">
-                        <i class="fas fa-ruler-combined text-primary text-xl mb-1"></i>
-                        <p id="modalArea" class="font-bold"></p>
-                        <p class="text-sm text-gray-500">m²</p>
-                    </div>
-                </div>
-                <p id="modalDescription" class="text-gray-600 mb-6 leading-relaxed"></p>
-                <div class="flex space-x-4">
-                    <a href="#contact" onclick="closePropertyModal()" class="flex-1 btn-primary py-3 rounded-xl text-white font-bold text-center" data-en="Schedule Viewing" data-hy="Նախապես Դիտում">Schedule Viewing</a>
-                    <a href="tel:+37410123456" class="flex-1 py-3 border-2 border-primary text-primary rounded-xl font-bold text-center hover:bg-primary hover:text-white transition" data-en="Call Agent" data-hy="Զանգահարել Գործակալին">Call Agent</a>
-                </div>
-            </div>
-        </div>
+    <div class="timer">
+      <div><span id="months">0</span><small>Months</small></div>
+      <div><span id="days">0</span><small>Days</small></div>
+      <div><span id="hours">0</span><small>Hours</small></div>
+      <div><span id="minutes">0</span><small>Minutes</small></div>
     </div>
+  </div>
 
-    <!-- Back to Top -->
-    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-8 right-8 w-12 h-12 bg-accent text-white rounded-full shadow-lg flex items-center justify-center hover:bg-primary transition transform translate-y-20 opacity-0 z-40">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+  <div id="details" class="details">
+    <h2>Wedding Details</h2>
 
-    <script>
-        // Language Toggle
-        let currentLang = 'en';
-        
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'hy' : 'en';
-            document.documentElement.lang = currentLang;
-            
-            // Update all elements with data-en/data-hy
-            document.querySelectorAll('[data-' + currentLang + ']').forEach(el => {
-                el.textContent = el.getAttribute('data-' + currentLang);
-            });
-            
-            // Update placeholders
-            document.querySelectorAll('[data-placeholder-' + currentLang + ']').forEach(el => {
-                el.placeholder = el.getAttribute('data-placeholder-' + currentLang);
-            });
-            
-            // Update lang toggle button
-            document.getElementById('langToggle').textContent = currentLang === 'en' ? 'HY' : 'EN';
-        }
+    <div class="cards">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80">
+        <h3>Church Ceremony</h3>
+        <p>Mughni Church</p>
+        <span>12:00</span>
+      </div>
 
-        // Mobile Menu
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('open');
-        }
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80">
+        <h3>Wedding Celebration</h3>
+        <p>Saffari Hall</p>
+        <span>After Ceremony</span>
+      </div>
+    </div>
+  </div>
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            const backToTop = document.getElementById('backToTop');
-            
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-dark/95', 'backdrop-blur-lg', 'shadow-lg');
-                navbar.classList.remove('bg-transparent');
-            } else {
-                navbar.classList.remove('bg-dark/95', 'backdrop-blur-lg', 'shadow-lg');
-                navbar.classList.add('bg-transparent');
-            }
-            
-            if (window.scrollY > 500) {
-                backToTop.classList.remove('translate-y-20', 'opacity-0');
-                backToTop.classList.add('translate-y-0', 'opacity-100');
-            } else {
-                backToTop.classList.add('translate-y-20', 'opacity-0');
-                backToTop.classList.remove('translate-y-0', 'opacity-100');
-            }
-        });
+  <div class="gallery">
+    <h2>Our Wedding Mood</h2>
 
-        // Scroll animations
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+    <div class="gallery-grid">
+      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=800&q=80">
+      <img src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?auto=format&fit=crop&w=800&q=80">
+    </div>
+  </div>
 
-        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => observer.observe(el));
+  <div class="footer-note">
+    <h2>We can’t wait to celebrate with you</h2>
+    <p>With love, Vache & Sona</p>
+  </div>
 
-        // Property filtering
-        function filterProperties(type) {
-            // Update button styles
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('bg-primary', 'text-white');
-                btn.classList.add('bg-white', 'text-gray-600');
-            });
-            event.target.classList.remove('bg-white', 'text-gray-600');
-            event.target.classList.add('bg-primary', 'text-white');
-            
-            // Filter cards
-            document.querySelectorAll('.property-card').forEach(card => {
-                if (type === 'all' || card.dataset.type === type) {
-                    card.style.display = 'block';
-                    card.style.animation = 'fadeIn 0.5s ease';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
+</section>
 
-        // Property search
-        function searchProperties() {
-            const type = document.getElementById('searchType').value;
-            const location = document.getElementById('searchLocation').value;
-            const budget = document.getElementById('searchBudget').value;
-            
-            // Scroll to properties section
-            document.getElementById('properties').scrollIntoView({ behavior: 'smooth' });
-            
-            // Apply filter if type is selected
-            if (type) {
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    if (btn.dataset.filter === type) {
-                        btn.click();
-                    }
-                });
-            }
-        }
+<style>
+.wedding-page {
+  font-family: Georgia, serif;
+  color: #4b2c2c;
+  background: #fff7f4;
+}
 
-        // Property data
-        const propertyData = {
-            1: {
-                title: { en: "Luxury Apartment in Kentron", hy: "Շքեղ Բնակարան Կենտրոնում" },
-                price: "$185,000",
-                location: { en: "Kentron, Yerevan", hy: "Կենտրոն, Երևան" },
-                beds: 3, baths: 2, area: 120,
-                description: { en: "Stunning 3-bedroom apartment in the heart of Yerevan. Features modern finishes, panoramic city views, underground parking, and 24/7 security. Walking distance to Republic Square, cafes, and cultural attractions.", hy: "Տպավորիչ 3 սենյականոց բնակարան Երևանի սրտում։ Ունի ժամանակակից հարդարում, քաղաքի համայնապատկերային տեսարաններ, ստորգետնյա ավտոկայանատեղի և 24/7 անվտանգություն։ Քայլելու հեռավորության վրա Հանրապետության հրապարակից, սրճարաններից և մշակութային վայրերից։" },
-                img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800"
-            },
-            2: {
-                title: { en: "Lake View Villa in Sevan", hy: "Լճի Տեսքով Վիլլա Սևանում" },
-                price: "$450,000",
-                location: { en: "Sevan, Armenia", hy: "Սևան, Հայաստան" },
-                beds: 5, baths: 3, area: 320,
-                description: { en: "Magnificent 5-bedroom villa with breathtaking Lake Sevan views. Features include a private garden, infinity pool, modern kitchen, and smart home technology. Perfect for family living or vacation rental.", hy: "Հոյակապ 5 սենյականոց վիլլա՝ Սևանա լճի շքեղ տեսարանով։ Հատկանիշները ներառում են մասնավոր այգի, ինֆինիտ ավազան, ժամանակակից խոհանոց և խելացի տան տեխնոլոգիա։ Կատարյալ ընտանեկան ապրելու կամ արձակուրդային վարձակալության համար։" },
-                img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800"
-            },
-            3: {
-                title: { en: "Modern Apartment on Abovyan", hy: "Ժամանակակից Բնակարան Աբովյան Փող." },
-                price: "$1,200/mo",
-                location: { en: "Abovyan St., Yerevan", hy: "Աբովյան Փող., Երևան" },
-                beds: 2, baths: 1, area: 85,
-                description: { en: "Beautifully renovated 2-bedroom apartment on Abovyan Street. Features high ceilings, hardwood floors, fully equipped kitchen, and modern bathroom. Ideal for young professionals or couples.", hy: "Գեղեցիկ վերանորոգված 2 սենյականոց բնակարան Աբովյան փողոցում։ Ունի բարձր առաստաղներ, կարծր փայտե հատակներ, լիովին սարքավորված խոհանոց և ժամանակակից լոգարան։ Իդեալական երիտասարդ մասնագետների կամ զույգերի համար։" },
-                img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800"
-            },
-            4: {
-                title: { en: "Forest House in Dilijan", hy: "Անտառային Տուն Դիլիջանում" },
-                price: "$280,000",
-                location: { en: "Dilijan, Armenia", hy: "Դիլիջան, Հայաստան" },
-                beds: 4, baths: 2, area: 220,
-                description: { en: "Charming 4-bedroom house surrounded by the lush forests of Dilijan. Features a stone fireplace, wooden interiors, large windows, and a spacious terrace. A perfect retreat from city life.", hy: "Հմայիչ 4 սենյականոց տուն՝ շրջապատված Դիլիջանի խիտ անտառներով։ Ունի քարե բուխարի, փայտե ինտերիեր, մեծ պատուհաններ և ընդարձակ տեռաս։ Կատարյալ ապաստան քաղաքի կյանքից։" },
-                img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800"
-            },
-            5: {
-                title: { en: "Premium Office Space", hy: "Պրեմիում Գրասենյակային Տարածք" },
-                price: "$350,000",
-                location: { en: "Northern Ave., Yerevan", hy: "Հյուսիսային Պող., Երևան" },
-                beds: 8, baths: 3, area: 400,
-                description: { en: "Prime commercial office space on Northern Avenue. Features open-plan layout, meeting rooms, high-speed internet infrastructure, and premium finishes. Ideal for tech companies or corporate headquarters.", hy: "Գերազանց առևտրային գրասենյակային տարածք Հյուսիսային պողոտայում։ Ունի բաց հատակագիծ, հանդիպումների սենյակներ, բարձր արագության ինտերնետային ենթակառուցվածք և պրեմիում հարդարում։ Իդեալական տեխնոլոգիական ընկերությունների կամ կորպորատիվ գրասենյակների համար։" },
-                img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800"
-            },
-            6: {
-                title: { en: "Mountain Villa in Tsaghkadzor", hy: "Լեռնային Վիլլա Ծաղկաձորում" },
-                price: "$620,000",
-                location: { en: "Tsaghkadzor, Armenia", hy: "Ծաղկաձոր, Հայաստան" },
-                beds: 6, baths: 4, area: 450,
-                description: { en: "Luxurious 6-bedroom mountain villa in Tsaghkadzor resort area. Features include a sauna, indoor pool, wine cellar, home theater, and panoramic mountain views. Perfect for luxury living or resort investment.", hy: "Շքեղ 6 սենյականոց լեռնային վիլլա Ծաղկաձորի հանգստավայրում։ Հատկանիշները ներառում են սաունա, փակ ավազան, գինու նկուղ, տնային կինոթատրոն և լեռների համայնապատկերային տեսարաններ։ Կատարյալ շքեղ ապրելու կամ հանգստավայրի ներդրման համար։" },
-                img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800"
-            }
-        };
+.hero {
+  position: relative;
+  min-height: 90vh;
+  background: url('https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
 
-        // Property Modal
-        function openPropertyModal(id) {
-            const property = propertyData[id];
-            const modal = document.getElementById('propertyModal');
-            
-            document.getElementById('modalImage').src = property.img;
-            document.getElementById('modalTitle').textContent = property.title[currentLang];
-            document.getElementById('modalPrice').textContent = property.price;
-            document.getElementById('modalLocation').querySelector('span').textContent = property.location[currentLang];
-            document.getElementById('modalBeds').textContent = property.beds;
-            document.getElementById('modalBaths').textContent = property.baths;
-            document.getElementById('modalArea').textContent = property.area;
-            document.getElementById('modalDescription').textContent = property.description[currentLang];
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 240, 235, 0.62);
+}
 
-        function closePropertyModal() {
-            const modal = document.getElementById('propertyModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = '';
-        }
+.hero-content {
+  position: relative;
+  max-width: 800px;
+  padding: 40px 20px;
+  animation: fadeUp 1.5s ease;
+}
 
-        // Close modal on outside click
-        document.getElementById('propertyModal').addEventListener('click', function(e) {
-            if (e.target === this) closePropertyModal();
-        });
+.small-title {
+  font-size: 16px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
 
-        // Form submission
-        function submitForm(e) {
-            e.preventDefault();
-            document.getElementById('formSuccess').classList.remove('hidden');
-            document.getElementById('contactForm').reset();
-            setTimeout(() => {
-                document.getElementById('formSuccess').classList.add('hidden');
-            }, 5000);
-        }
+.hero h1 {
+  font-size: clamp(58px, 10vw, 120px);
+  margin: 20px 0;
+  color: #7b3f45;
+  font-weight: 400;
+}
 
-        // Newsletter subscription
-        function subscribeNewsletter(e) {
-            e.preventDefault();
-            document.getElementById('newsletterSuccess').classList.remove('hidden');
-            e.target.reset();
-            setTimeout(() => {
-                document.getElementById('newsletterSuccess').classList.add('hidden');
-            }, 5000);
-        }
+.subtitle {
+  font-size: 28px;
+  font-style: italic;
+}
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+.date-box {
+  display: inline-block;
+  margin: 25px 0;
+  padding: 14px 34px;
+  border: 1px solid #7b3f45;
+  border-radius: 50px;
+  font-size: 22px;
+  background: rgba(255,255,255,0.6);
+}
 
-        // Add CSS animation keyframes
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
-</body>
-</html>
+.time {
+  font-size: 20px;
+}
 
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 15px 34px;
+  border-radius: 50px;
+  background: #7b3f45;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
 
+.countdown {
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.countdown h2,
+.details h2,
+.gallery h2,
+.footer-note h2 {
+  font-size: 42px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 35px;
+}
+
+.timer div {
+  width: 140px;
+  height: 130px;
+  border-radius: 28px;
+  background: white;
+  box-shadow: 0 15px 35px rgba(123, 63, 69, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer span {
+  font-size: 42px;
+  color: #7b3f45;
+}
+
+.timer small {
+  margin-top: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.details {
+  padding: 70px 7%;
+  text-align: center;
+  background: #fff;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 35px;
+}
+
+.card {
+  background: #fff7f4;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.card img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+}
+
+.card h3 {
+  font-size: 28px;
+  margin: 25px 0 10px;
+}
+
+.card p {
+  font-size: 20px;
+}
+
+.card span {
+  display: block;
+  margin-bottom: 25px;
+  color: #9b5b61;
+}
+
+.gallery {
+  padding: 70px 7%;
+  text-align: center;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 28px;
+}
+
+.footer-note {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #7b3f45, #c98f91);
+  color: white;
+}
+
+.footer-note p {
+  font-size: 22px;
+  font-style: italic;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media(max-width: 768px) {
+  .cards,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timer div {
+    width: 120px;
+    height: 115px;
+  }
+
+  .card img,
+  .gallery-grid img {
+    height: 280px;
+  }
+}
+</style>
+
+<script>
+function updateWeddingCountdown() {
+  const weddingDate = new Date("October 27, 2026 12:00:00").getTime();
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+
+  if (distance <= 0) {
+    document.querySelector(".timer").innerHTML = "<h3>The wedding day is here!</h3>";
+    return;
+  }
+
+  const totalDays = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const months = Math.floor(totalDays / 30);
+  const days = totalDays % 30;
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+
+  document.getElementById("months").innerText = months;
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+}
+
+updateWeddingCountdown();
+setInterval(updateWeddingCountdown, 60000);
+</script>
